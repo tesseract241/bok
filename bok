@@ -36,7 +36,7 @@ edit() {
   # initialize journal file and necessary directories,
   # being sure not to overwrite an existing file
   [ ! -f "$file" ] &&
-    (date -d "$1" '+%a %D' | install -D /dev/stdin "$file")
+    (date -d "$1" '+%a %x' | install -D /dev/stdin "$file")
   [ "$EDITOR" = "vim" ] && 
     $EDITOR -c ":set tw=79" "$file" ||
     $EDITOR "$file"
