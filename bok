@@ -9,9 +9,13 @@ bokcat() {
   # get index of target entry
   n=1
   if [[ $# -gt 0 ]]; then
-  n=$( # line numbers start at 1, but index starts at 0
-                  grep -n "$(date -d "$1" '+%Y/%m/%d')" <<< "$journal" | 
-                  cut -f1 -d:)
+  date="$(date -d "$1" '+%Y/%m/%d')"
+  if [[ $? -ne 0 ]]; then
+      showhelp && exit 1
+  fi
+  n=$(
+      grep -n "$date" <<< "$journal" | 
+      cut -f1 -d:)
   fi
   journal=$(tail "+$n" <<< "$journal")
   output=${2:-"output.txt"}
