@@ -8,7 +8,7 @@ bokcat() {
 
   # get index of target entry
   n=1
-  if [[ $# -gt 0 ]]; then
+  if [[ -z "${1+x}" ]]; then
   date="$(date -d "$1" '+%Y/%m/%d')"
   if [[ $? -ne 0 ]]; then
       showhelp && exit 1
