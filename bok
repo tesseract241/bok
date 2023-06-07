@@ -21,7 +21,7 @@ bokcat() {
   output=${2:-"output.txt"}
   while read -r f; do
       cat $f >> $output
-      echo -e "\n\n\n" >> $output
+      echo -e "\n\n------------------------------------------------------------------------------------------\n" >> $output
   done<<<$journal
 }
 
