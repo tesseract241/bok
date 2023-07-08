@@ -37,8 +37,10 @@ edit() {
   # being sure not to overwrite an existing file
   [ ! -f "$file" ] &&
     (date -d "$1" '+%a %x' | install -D /dev/stdin "$file")
-  [ "$EDITOR" = "vim" ] && 
-    $EDITOR -c ":set tw=79" "$file" ||
+  local PATTERN='*vim'
+  lang=$(locale lang_ab)
+  [[ $EDITOR = $PATTERN ]] && 
+    $EDITOR -c ":set tw=80" -c ":set spell spelllang=$lang" "$file" ||
     $EDITOR "$file"
 }
 
