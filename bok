@@ -8,7 +8,6 @@ bokcat() {
 
   # get index of target entry
   n=1
-  if [[ -z "${1+x}" ]]; then
   date="$(date -d "$1" '+%Y/%m/%d')"
   if [[ $? -ne 0 ]]; then
       showhelp && exit 1
@@ -16,7 +15,6 @@ bokcat() {
   n=$(
       grep -n "$date" <<< "$journal" | 
       cut -f1 -d:)
-  fi
   journal=$(tail "+$n" <<< "$journal")
   output=${2:-"output.txt"}
   while read -r f; do
