@@ -49,6 +49,23 @@ creating it if it does not yet exist.
 .YS
 
 .SY bok
+.I cat
+.RI [ date ]
+.RI [ file ]
+
+Concatenates journal files since 
+.IR date 
+and outputs them into
+.IR file .
+If given no 
+.IR date ,
+it will concatenate the entire journal.  
+If given no 
+.IR file ,
+it will output to ./output.txt
+.YS
+
+.SY bok
 .I edit
 .RI [ date ]
 

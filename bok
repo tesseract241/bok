@@ -15,8 +15,10 @@ bokcat() {
   n=$(
       grep -n "$date" <<< "$journal" | 
       cut -f1 -d:)
+  # select only entries after $date
   journal=$(tail "+$n" <<< "$journal")
   output=${2:-"output.txt"}
+  # cat the entries into $output
   while read -r f; do
       cat $f >> $output
       echo -e "\n\n------------------------------------------------------------------------------------------\n" >> $output
